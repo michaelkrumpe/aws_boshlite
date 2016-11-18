@@ -1,0 +1,14 @@
+meta:
+  
+  fog_config:
+    provider: AWS
+    aws_access_key_id: AKIAIHCOKHCAJSKHXTTA
+    aws_secret_access_key: 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
+    region: us-east-1
+    
+director_uuid: c9ff6012-3899-4540-bca1-77e05f5a32d0
+
+properties:
+  system_domain: cf.cloudfoundrygesture.com 
+  
+
