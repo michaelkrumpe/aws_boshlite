@@ -10,42 +10,42 @@ vBOSH_LITE_INSTANCE_TYPE=''
 
 while true
 do
-    if [ "$vBOSH_AWS_ACCESS_KEY_ID" == '']; then
+    if [ "$vBOSH_AWS_ACCESS_KEY_ID" = '']; then
         read -p "AWS ACCESS KEY : $vBOSH_AWS_ACCESS_KEY_ID" vAWS_ACCESS_KEY
         vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
     fi
 
-    if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == '']; then
+    if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" = '']; then
         read -p "AWS SECRET KEY: $vBOSH_AWS_SECRET_ACCESS_KEY" vAWS_SECRET_KEY
         vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
     fi
 
-    if [ "$vBOSH_LITE_NAME" == '']; then
+    if [ "$vBOSH_LITE_NAME" = '']; then
         read -p "Name of the BOSH machine to deploy: $vBOSH_LITE_NAME" vBOSHNAME
         vBOSH_LITE_NAME=$vBOSHNAME
     fi
 
-    if [ "$vBOSH_LITE_SECURITY_GROUP" == '']; then
+    if [ "$vBOSH_LITE_SECURITY_GROUP" = '']; then
         read -p "Name of the AWS Security group setup: $vBOSH_LITE_SECURITY_GROUP" vSECURITYGROUP
         vBOSH_LITE_SECURITY_GROUP=$vSECURITYGROUP
     fi
 
-    if [ "$vBOSH_LITE_KEYPAIR" == '']; then
+    if [ "$vBOSH_LITE_KEYPAIR" = '']; then
         read -p "Name of the AWS API Key Pair to be used by Vagrant: $vBOSH_LITE_KEYPAIR" vKEYPAIR
         vBOSH_LITE_KEYPAIR=$vKEYPAIR
     fi
 
-    if [ "$vBOSH_LITE_PRIVATE_KEY" == '']; then
+    if [ "$vBOSH_LITE_PRIVATE_KEY" = '']; then
         read -p "Private Key: $vBOSH_LITE_PRIVATE_KEY  File path on this machine of the .pem file from your keys. Should be in ~/.ssh/ directory. If you have not uploaded, please do so now and type the full path including the ~" -vKEYLOC
         vBOSH_LITE_PRIVATE_KEY=$vKEYLOC
     fi
 
-    if [ "$vBOSH_LITE_SUBNET_ID" == '']; then
+    if [ "$vBOSH_LITE_SUBNET_ID" = '']; then
         read -p "AWS VPC Subnet ID: $vBOSH_LITE_SUBNET_ID" vSUBNET
         vBOSH_LITE_SUBNET_ID=vSUBNET
     fi
 
-    if [ "$vBOSH_LITE_INSTANCE_TYPE" == '']; then
+    if [ "$vBOSH_LITE_INSTANCE_TYPE" = '']; then
         read =p "AWS Instance type. Should be either m3.medium or m3.large: $vBOSH_LITE_INSTANCE_TYPE" vINSTANCE
         vBOSH_LITE_INSTANCE_TYPE=$vINSTANCE
     fi
