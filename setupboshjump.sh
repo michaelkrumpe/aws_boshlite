@@ -46,7 +46,8 @@ do
     fi
 
     if [ -z "$vBOSH_LITE_PRIVATE_KEY"]; then
-        read -p "Private Key: $vBOSH_LITE_PRIVATE_KEY  File path on this machine of the .pem file from your keys. Should be in ~/.ssh/ directory. If you have not uploaded, please do so now and type the full path including the ~" -vKEYLOC
+        echo "File path on this machine of the .pem file from your keys. Should be in ~/.ssh/ directory. If you have not uploaded, please do so now and type the full path including the ~"
+        read -p "Private Key: $vBOSH_LITE_PRIVATE_KEY" vKEYLOC
         vBOSH_LITE_PRIVATE_KEY=$vKEYLOC
     else
         echo "Private Key: $vBOSH_LITE_PRIVATE_KEY"
