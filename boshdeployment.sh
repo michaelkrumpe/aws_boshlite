@@ -10,49 +10,49 @@ vBOSH_VPC_SECONDARY_AZ=us-east-1d
 read -p "Have you uploaded your stub manifest file to your user's root ~/ directory? y/n"
 
 
-if [ "$vBOSH_AWS_ACCESS_KEY_ID" == ""]
+if [ "$vBOSH_AWS_ACCESS_KEY_ID" == ""]; then
     echo "AWS ACCESS KEY
     "
     read vAWS_ACCESS_KEY
     vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
 fi
 
-if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == ""]
+if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == ""]; then
     echo "AWS SECRET KEY
     "
     read vAWS_SECRET_KEY
     vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
 fi
 
-if [ "$vBOSH_VPC_DOMAIN" == "" ]
+if [ "$vBOSH_VPC_DOMAIN" == "" ]; then
     echo "VPC Domain, pointing to CF. If you do not have one use, IP.Address.numbers.xip.io
     "
     read vDomain
     vBOSH_VPC_DOMAIN=$vDomain
 fi
 
-if [ "$vBOSH_VPC_SUBDOMAIN" == "" ]
+if [ "$vBOSH_VPC_SUBDOMAIN" == "" ]; then
     echo "AWS SUBDOMAIN
     "
     read vSUBDOMAIN
     vBOSH_VPC_SUBDOMAIN=$vSUBDOMAIN
 fi
 
-if [ "$vBOSH_AWS_REGION" == "" ]
+if [ "$vBOSH_AWS_REGION" == "" ]; then
     echo "AWS Region to deploy CF (Should be the same as BOSH-LITE)
     "
     read vREGION
     vBOSH_AWS_REGION=vREGION
 fi
 
-if [ "$vBOSH_VPC_PRIMARY_AZ" == "" ]
+if [ "$vBOSH_VPC_PRIMARY_AZ" == "" ]; then
     echo "VPC Primary Domain
     "
     read vPRIMARY
     vBOSH_VPC_PRIMARY_AZ=vPRIMARY
 fi
 
-if [ "$vBOSH_VPC_SECONDARY_AZ" == "" ]
+if [ "$vBOSH_VPC_SECONDARY_AZ" == "" ]; then
     echo "VPC Secondary Domain
     "
     read vSECONDARY
