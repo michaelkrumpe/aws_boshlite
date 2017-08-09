@@ -7,57 +7,81 @@ vBOSH_AWS_REGION=us-east-1
 vBOSH_VPC_PRIMARY_AZ=us-east-1a
 vBOSH_VPC_SECONDARY_AZ=us-east-1d
 
-read -p "Have you uploaded your stub manifest file to your user's root ~/ directory? y/n"
+while true
+do
+    read -p "Have you uploaded your stub manifest file to your user's root ~/ directory? Y/M" m_answer
+    case $m_answer in
+        [yY]* ) break;;
 
+        [nN]* ) exit;;
 
-if [ "$vBOSH_AWS_ACCESS_KEY_ID" == ""]; then
-    echo "AWS ACCESS KEY
-    "
-    read vAWS_ACCESS_KEY
-    vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
-fi
+        * );;
+    esac
+done
 
-if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == ""]; then
-    echo "AWS SECRET KEY
-    "
-    read vAWS_SECRET_KEY
-    vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
-fi
+while true
+do
 
-if [ "$vBOSH_VPC_DOMAIN" == "" ]; then
-    echo "VPC Domain, pointing to CF. If you do not have one use, IP.Address.numbers.xip.io
-    "
-    read vDomain
-    vBOSH_VPC_DOMAIN=$vDomain
-fi
+    if [ z- "$vBOSH_AWS_ACCESS_KEY_ID"]; then
+        read -p "AWS ACCESS KEY:" vAWS_ACCESS_KEY
+        vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
+    else
+        echo "AWS ACCESS KEY: $vBOSH_AWS_ACCESS_KEY_ID"
+    fi
 
-if [ "$vBOSH_VPC_SUBDOMAIN" == "" ]; then
-    echo "AWS SUBDOMAIN
-    "
-    read vSUBDOMAIN
-    vBOSH_VPC_SUBDOMAIN=$vSUBDOMAIN
-fi
+    if [ z- "$vBOSH_AWS_SECRET_ACCESS_KEY"]; then
+        read -p "AWS SECRET KEY:" vAWS_SECRET_KEY
+        vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
+    else
+        echo "AWS SECRET KEY: $vBOSH_AWS_SECRET_ACCESS_KEY"
+    fi
 
-if [ "$vBOSH_AWS_REGION" == "" ]; then
-    echo "AWS Region to deploy CF (Should be the same as BOSH-LITE)
-    "
-    read vREGION
-    vBOSH_AWS_REGION=vREGION
-fi
+    if [ z- "$vBOSH_VPC_DOMAIN"]; then
+        echo "VPC Domain, pointing to CF. If you do not have one use, IP.Address.numbers.xip.io"
+        read -p "VPC Domain:" vDomain
+        vBOSH_VPC_DOMAIN=$vDomain
+    else
+        echo "VPC Domain: $vBOSH_VPC_DOMAIN"
+    fi
 
-if [ "$vBOSH_VPC_PRIMARY_AZ" == "" ]; then
-    echo "VPC Primary Domain
-    "
-    read vPRIMARY
-    vBOSH_VPC_PRIMARY_AZ=vPRIMARY
-fi
+    if [ z- "$vBOSH_VPC_SUBDOMAIN"]; then
+        read -p "AWS SUBDOMAIN" vSUBDOMAIN
+        vBOSH_VPC_SUBDOMAIN=$vSUBDOMAIN
+    else
+        echo "AWS SUBDOMAIN: $vBOSH_VPC_SUBDOMAIN"
+    fi
 
-if [ "$vBOSH_VPC_SECONDARY_AZ" == "" ]; then
-    echo "VPC Secondary Domain
-    "
-    read vSECONDARY
-    vBOSH_VPC_SECONDARY_AZ=vSECONDARY
-fi
+    if [ z- "$vBOSH_AWS_REGION"]; then
+        read -p "AWS Region to deploy CF (Should be the same as BOSH-LITE)" vREGION
+        vBOSH_AWS_REGION=vREGION
+    else
+        echo "AWS Region: $vBOSH_AWS_REGION"
+    fi
+
+    if [ z- "$vBOSH_VPC_PRIMARY_AZ"]; then
+        read -p "VPC Primary Domain" vPRIMARY
+        vBOSH_VPC_PRIMARY_AZ=vPRIMARY
+    else
+        echo "VPC Primary Domain: $vBOSH_VPC_PRIMARY_AZ"
+    fi
+
+    if [ z- "$vBOSH_VPC_SECONDARY_AZ"]; then
+        read -p "VPC Secondary Domain" vSECONDARY
+        vBOSH_VPC_SECONDARY_AZ=vSECONDARY
+    else
+        echo "VPC Secondary Domain: $vBOSH_VPC_SECONDARY_AZ"
+    fi
+
+    read -p "Confirm values? [Y]es or [N]o?" answer
+    case $answer in
+        [yY]* ) break;;
+
+        [nN]* ) exit;;
+
+        * )     echo "Please reconfirm values.";;
+
+    esac
+done
 
 sudo apt-get update && sudo apt-get -y install git unzip
 wget https://github.com/cloudfoundry-incubator/spiff/releases/download/v1.0.7/spiff_linux_amd64.zip
