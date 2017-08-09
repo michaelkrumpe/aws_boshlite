@@ -13,41 +13,57 @@ do
     if [ -z "$vBOSH_AWS_ACCESS_KEY_ID"]; then
         read -p "AWS ACCESS KEY : $vBOSH_AWS_ACCESS_KEY_ID" vAWS_ACCESS_KEY
         vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
+    else
+        echo "AWS ACCESS KEY : $vBOSH_AWS_ACCESS_KEY_ID"
     fi
 
-    if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == '']; then
+    if [ -z "$vBOSH_AWS_SECRET_ACCESS_KEY"]; then
         read -p "AWS SECRET KEY: $vBOSH_AWS_SECRET_ACCESS_KEY" vAWS_SECRET_KEY
         vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
+    else
+        echo "AWS SECRET KEY: $vBOSH_AWS_SECRET_ACCESS_KEY"
     fi
 
-    if [ "$vBOSH_LITE_NAME" == '']; then
+    if [ -z "$vBOSH_LITE_NAME"]; then
         read -p "Name of the BOSH machine to deploy: $vBOSH_LITE_NAME" vBOSHNAME
         vBOSH_LITE_NAME=$vBOSHNAME
+    else
+        echo "Name of the BOSH machine to deploy: $vBOSH_LITE_NAME"
     fi
 
-    if [ "$vBOSH_LITE_SECURITY_GROUP" == '']; then
+    if [ -z  "$vBOSH_LITE_SECURITY_GROUP"]; then
         read -p "Name of the AWS Security group setup: $vBOSH_LITE_SECURITY_GROUP" vSECURITYGROUP
         vBOSH_LITE_SECURITY_GROUP=$vSECURITYGROUP
+    else 
+        echo  "Name of the AWS Security group setup: $vBOSH_LITE_SECURITY_GROUP"
     fi
 
-    if [ "$vBOSH_LITE_KEYPAIR" == '']; then
+    if [ -z "$vBOSH_LITE_KEYPAIR"]; then
         read -p "Name of the AWS API Key Pair to be used by Vagrant: $vBOSH_LITE_KEYPAIR" vKEYPAIR
         vBOSH_LITE_KEYPAIR=$vKEYPAIR
+    else
+        echo "Name of the AWS API Key Pair to be used by Vagrant: $vBOSH_LITE_KEYPAIR"
     fi
 
-    if [ "$vBOSH_LITE_PRIVATE_KEY" == '']; then
+    if [ -z "$vBOSH_LITE_PRIVATE_KEY"]; then
         read -p "Private Key: $vBOSH_LITE_PRIVATE_KEY  File path on this machine of the .pem file from your keys. Should be in ~/.ssh/ directory. If you have not uploaded, please do so now and type the full path including the ~" -vKEYLOC
         vBOSH_LITE_PRIVATE_KEY=$vKEYLOC
+    else
+        echo "Private Key: $vBOSH_LITE_PRIVATE_KEY"
     fi
 
-    if [ "$vBOSH_LITE_SUBNET_ID" == '']; then
+    if [ -z "$vBOSH_LITE_SUBNET_ID"]; then
         read -p "AWS VPC Subnet ID: $vBOSH_LITE_SUBNET_ID" vSUBNET
         vBOSH_LITE_SUBNET_ID=vSUBNET
+    else
+        echo "AWS VPC Subnet ID: $vBOSH_LITE_SUBNET_ID"
     fi
 
-    if [ "$vBOSH_LITE_INSTANCE_TYPE" == '']; then
-        read =p "AWS Instance type. Should be either m3.medium or m3.large: $vBOSH_LITE_INSTANCE_TYPE" vINSTANCE
+    if [ -z "$vBOSH_LITE_INSTANCE_TYPE"]; then
+        read -p "AWS Instance type. Should be either m3.medium or m3.large: $vBOSH_LITE_INSTANCE_TYPE" vINSTANCE
         vBOSH_LITE_INSTANCE_TYPE=$vINSTANCE
+    else
+        echo "AWS Instance type. Should be either m3.medium or m3.large: $vBOSH_LITE_INSTANCE_TYPE"
     fi
 
     read -p "Confirm values? [Y]es or [N]o?" answer
