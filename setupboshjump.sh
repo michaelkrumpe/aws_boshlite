@@ -8,56 +8,56 @@ vBOSH_LITE_PRIVATE_KEY=
 vBOSH_LITE_SUBNET_ID=
 vBOSH_LITE_INSTANCE_TYPE=
 
-if [ "$vBOSH_AWS_ACCESS_KEY_ID" == ""]; then
+if [[ "$vBOSH_AWS_ACCESS_KEY_ID" == ""]]; then
     echo "AWS ACCESS KEY
     "
     read -p vAWS_ACCESS_KEY
     vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
 fi
 
-if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == ""]; then
+if [[ "$vBOSH_AWS_SECRET_ACCESS_KEY" == ""]]; then
     echo "AWS SECRET KEY
     "
     read -p vAWS_SECRET_KEY
     vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
 fi
 
-if [ "$vBOSH_LITE_NAME" == ""]; then
+if [[ "$vBOSH_LITE_NAME" == ""]]; then
     echo "Name of the BOSH machine to deploy
     "
     read -p vBOSHNAME
     vBOSH_LITE_NAME=$vBOSHNAME
 fi
 
-if [ "$vBOSH_LITE_SECURITY_GROUP" == ""]; then
+if [[ "$vBOSH_LITE_SECURITY_GROUP" == ""]]; then
     echo "Name of the AWS Security group setup
     "
     read -p vSECURITYGROUP
     vBOSH_LITE_SECURITY_GROUP=$vSECURITYGROUP
 fi
 
-if [ "$vBOSH_LITE_KEYPAIR" == ""]; then
+if [[ "$vBOSH_LITE_KEYPAIR" == ""]]; then
     echo "Name of the AWS API Key Pair to be used by Vagrant
     "
     read -p vKEYPAIR
     vBOSH_LITE_KEYPAIR=$vKEYPAIR
 fi
 
-if [ "$vBOSH_LITE_PRIVATE_KEY" == ""]; then
+if [[ "$vBOSH_LITE_PRIVATE_KEY" == ""]]; then
     echo "File path on this machine of the .pem file from your keys. Should be in ~/.ssh/ directory. If you have not uploaded, please do so now and type the full path including the ~
     "
     read -p vKEYLOC
     vBOSH_LITE_PRIVATE_KEY=$vKEYLOC
 fi
 
-if [ "$vBOSH_LITE_SUBNET_ID" == ""]; then
+if [[ "$vBOSH_LITE_SUBNET_ID" == ""]]; then
     echo "AWS VPC Subnet ID
     "
     read -p vSUBNET
     vBOSH_LITE_SUBNET_ID=vSUBNET
 fi
 
-if [ "$vBOSH_LITE_INSTANCE_TYPE" == ""]; then
+if [[ "$vBOSH_LITE_INSTANCE_TYPE" == ""]]; then
     echo "AWS Instance type. Should be either m3.medium or m3.large
     "
     read -p vINSTANCE
