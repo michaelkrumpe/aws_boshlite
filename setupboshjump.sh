@@ -30,8 +30,7 @@ if [ "$vBOSH_LITE_NAME" == '']; then
 fi
 
 if [ "$vBOSH_LITE_SECURITY_GROUP" == '']; then
-    echo "Name of the AWS Security group setup
-    "
+    echo Name of the AWS Security group setup
     read -p vSECURITYGROUP
     vBOSH_LITE_SECURITY_GROUP=$vSECURITYGROUP
 fi
