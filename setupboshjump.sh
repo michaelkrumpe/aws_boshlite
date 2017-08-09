@@ -57,7 +57,6 @@ do
         read vINSTANCE
         vBOSH_LITE_INSTANCE_TYPE=$vINSTANCE
     fi
-    esac
 done
 
 
