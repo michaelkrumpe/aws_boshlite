@@ -8,53 +8,58 @@ vBOSH_LITE_PRIVATE_KEY=''
 vBOSH_LITE_SUBNET_ID=''
 vBOSH_LITE_INSTANCE_TYPE=''
 
-if [ "$vBOSH_AWS_ACCESS_KEY_ID" == '']; then
-    echo AWS ACCESS KEY
-    read vAWS_ACCESS_KEY
-    vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
-fi
+while true
+do
+    if [ "$vBOSH_AWS_ACCESS_KEY_ID" == '']; then
+        echo AWS ACCESS KEY
+        read vAWS_ACCESS_KEY
+        vBOSH_AWS_ACCESS_KEY_ID=$vAWS_ACCESS_KEY
+    fi
 
-if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == '']; then
-    echo AWS SECRET KEY
-    read vAWS_SECRET_KEY
-    vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
-fi
+    if [ "$vBOSH_AWS_SECRET_ACCESS_KEY" == '']; then
+        echo AWS SECRET KEY
+        read vAWS_SECRET_KEY
+        vBOSH_AWS_SECRET_ACCESS_KEY=$vAWS_SECRET_KEY
+    fi
 
-if [ "$vBOSH_LITE_NAME" == '']; then
-    echo Name of the BOSH machine to deploy
-    read vBOSHNAME
-    vBOSH_LITE_NAME=$vBOSHNAME
-fi
+    if [ "$vBOSH_LITE_NAME" == '']; then
+        echo Name of the BOSH machine to deploy
+        read vBOSHNAME
+        vBOSH_LITE_NAME=$vBOSHNAME
+    fi
 
-if [ "$vBOSH_LITE_SECURITY_GROUP" == '']; then
-    echo Name of the AWS Security group setup
-    read vSECURITYGROUP
-    vBOSH_LITE_SECURITY_GROUP=$vSECURITYGROUP
-fi
+    if [ "$vBOSH_LITE_SECURITY_GROUP" == '']; then
+        echo Name of the AWS Security group setup
+        read vSECURITYGROUP
+        vBOSH_LITE_SECURITY_GROUP=$vSECURITYGROUP
+    fi
 
-if [ "$vBOSH_LITE_KEYPAIR" == '']; then
-    echo Name of the AWS API Key Pair to be used by Vagrant
-    read vKEYPAIR
-    vBOSH_LITE_KEYPAIR=$vKEYPAIR
-fi
+    if [ "$vBOSH_LITE_KEYPAIR" == '']; then
+        echo Name of the AWS API Key Pair to be used by Vagrant
+        read vKEYPAIR
+        vBOSH_LITE_KEYPAIR=$vKEYPAIR
+    fi
 
-if [ "$vBOSH_LITE_PRIVATE_KEY" == '']; then
-    echo File path on this machine of the .pem file from your keys. Should be in ~/.ssh/ directory. If you have not uploaded, please do so now and type the full path including the ~
-    read -vKEYLOC
-    vBOSH_LITE_PRIVATE_KEY=$vKEYLOC
-fi
+    if [ "$vBOSH_LITE_PRIVATE_KEY" == '']; then
+        echo File path on this machine of the .pem file from your keys. Should be in ~/.ssh/ directory. If you have not uploaded, please do so now and type the full path including the ~
+        read -vKEYLOC
+        vBOSH_LITE_PRIVATE_KEY=$vKEYLOC
+    fi
 
-if [ "$vBOSH_LITE_SUBNET_ID" == '']; then
-    echo AWS VPC Subnet ID
-    read vSUBNET
-    vBOSH_LITE_SUBNET_ID=vSUBNET
-fi
+    if [ "$vBOSH_LITE_SUBNET_ID" == '']; then
+        echo AWS VPC Subnet ID
+        read vSUBNET
+        vBOSH_LITE_SUBNET_ID=vSUBNET
+    fi
 
-if [ "$vBOSH_LITE_INSTANCE_TYPE" == '']; then
-    echo AWS Instance type. Should be either m3.medium or m3.large
-    read vINSTANCE
-    vBOSH_LITE_INSTANCE_TYPE=$vINSTANCE
-fi
+    if [ "$vBOSH_LITE_INSTANCE_TYPE" == '']; then
+        echo AWS Instance type. Should be either m3.medium or m3.large
+        read vINSTANCE
+        vBOSH_LITE_INSTANCE_TYPE=$vINSTANCE
+    fi
+    esac
+done
+
 
 #echo "update"
 apt-get update
